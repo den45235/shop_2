@@ -35,3 +35,11 @@ class CartProduct(models.Model):
 class Cart(models.Model):
 
     owner = models.ForeignKey('customer', verbose_name='владелец', on_delete=models.CASCADE)
+    products = models.ManyToManyField(CartProduct, blank=True)
+    total_products = models.PositiveIntegerField(default=0)
+    final_price = models.DecimalField(max_digits=9, decimal_places=2, verbose_name='общая цена')
+
+    def __str__(self):
+        return str(self.id)
+
+
