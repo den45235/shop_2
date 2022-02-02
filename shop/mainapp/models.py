@@ -32,4 +32,6 @@ class CartProduct(models.Model):
     def __str__(self):
         return "продукт: {} (для корзины)".format(self.product.title)
 
+class Cart(models.Model):
 
+    owner = models.ForeignKey('customer', verbose_name='владелец', on_delete=models.CASCADE)
