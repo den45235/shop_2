@@ -28,7 +28,7 @@ class Product(models.Model):
 class CartProduct(models.Model):
 
     user = models.ForeignKey('customer', verbose_name='покупатель', on_delete=models.CASCADE)
-    cart = models.ForeignKey('cart', verbose_name='корзина', on_delete=models. CASCADE)
+    cart = models.ForeignKey('cart', verbose_name='корзина', on_delete=models. CASCADE, related_name='related_product')
     product = models.ForeignKey(Product, verbose_name='товар', on_delete=models.CASCADE)
     qty = models.PositiveIntegerField(default=1)
     final_price = models.DecimalField(max_digits=9, decimal_places=2, verbose_name='общая цена')
@@ -39,7 +39,7 @@ class CartProduct(models.Model):
 class Cart(models.Model):
 
     owner = models.ForeignKey('customer', verbose_name='владелец', on_delete=models.CASCADE)
-    products = models.ManyToManyField(CartProduct, blank=True)
+    products = models.ManyToManyField(CartProduct, blank=True, related_name='related_cart')
     total_products = models.PositiveIntegerField(default=0)
     final_price = models.DecimalField(max_digits=9, decimal_places=2, verbose_name='общая цена')
 
