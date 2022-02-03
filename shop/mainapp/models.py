@@ -48,6 +48,9 @@ class Cart(models.Model):
 class Customer(models.Model):
 
     user = models.ForeignKey(User, verbose_name='пользователь', on_delete=models.CASCADE)
+    phone = models.CharField(max_length=20, verbose_name='номер телефона')
+    address = models.CharField(max_length=255, verbose_name='адрес')
+
 
 
 
