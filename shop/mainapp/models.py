@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from django.contrib.contenttypes.models import  ContentType
 
 User = get_user_model()
 
@@ -50,6 +51,21 @@ class Customer(models.Model):
     user = models.ForeignKey(User, verbose_name='пользователь', on_delete=models.CASCADE)
     phone = models.CharField(max_length=20, verbose_name='номер телефона')
     address = models.CharField(max_length=255, verbose_name='адрес')
+
+    def __str__(self):
+        return "покупатель: {} {}".format(self.user.first_name,self.user.last_name)
+
+
+class Specification(models.Model):
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    object_id = models.PositiveIntegerField()
+    name = models.CharField(max_length=255, verbose_name='имя товара для характеристик')
+
+    def __str__(self):
+        return "характеристики для товара: {}".format(self.name)
+
+
+
 
 
 
