@@ -1,4 +1,7 @@
 from django.db import models
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 class Category(models.Model):
 
@@ -41,5 +44,13 @@ class Cart(models.Model):
 
     def __str__(self):
         return str(self.id)
+
+class Customer(models.Model):
+
+    user = models.ForeignKey(User, verbose_name='пользователь', on_delete=models.CASCADE)
+
+
+
+
 
 
