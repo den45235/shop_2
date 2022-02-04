@@ -67,7 +67,7 @@ class Customer(models.Model):
         return "покупатель: {} {}".format(self.user.first_name,self.user.last_name)
 
 
-class NotebookProduct(Product):
+class Notebooks(Product):
 
     diagonal = models.CharField(max_length=255, verbose_name='диагональ')
     display_type = models.CharField(max_length=255, verbose_name='тип дисплея')
@@ -83,6 +83,15 @@ class Smartphone(Product):
      diagonal = models.CharField(max_length=255, verbose_name='диагональ')
      display_type = models.CharField(max_length=255, verbose_name='тип дисплея')
      resolution = models.CharField(max_length=255, verbose_name='разрешение экрана')
+     accum_volume = models.CharField(max_length=255, verbose_name='объем батареи')
+     ram = models.CharField(max_length=255, verbose_name='оперативная память')
+     sd = models.BooleanField(default=True)
+     sd_volume_max = models.CharField(max_length=255, verbose_name='максимальный объем встраиваемой памяти')
+     main_cam_mp = models.CharField(max_length=255, verbose_name='главная камера')
+     frontal_cam_mp = models.CharField(max_length=255, verbose_name='фронтальная камера')
+
+     def __str__(self):
+         return "{} : {}".format(self.category.name, self.title)
 
 
 
