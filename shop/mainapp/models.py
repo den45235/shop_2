@@ -5,6 +5,8 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 
 User = get_user_model()
 
+class LatestProducts
+
 class Category(models.Model):
 
     name = models.CharField(max_length=255, verbose_name='имя категории')
@@ -92,6 +94,15 @@ class Smartphone(Product):
 
      def __str__(self):
          return "{} : {}".format(self.category.name, self.title)
+
+
+#
+# class SomeModel(models.Model):
+#
+#     image = models.ImageField()
+#
+#     def __str__(self):
+#         return str(self.id)
 
 
 
