@@ -73,9 +73,16 @@ class NotebookProduct(Product):
     display_type = models.CharField(max_length=255, verbose_name='тип дисплея')
     processor_freq = models.CharField(max_length=255, verbose_name='частота процессора')
     ram = models.CharField(max_length=255, verbose_name='оперативная память')
-    video = models.CharField()
+    video = models.CharField(max_length=255, verbose_name='видеокарта')
+    time_without_charge = models.CharField(max_length=255, verbose_name='время работы аккумулятора')
 
+    def __str__(self):
+        return "{} {}".format(self.category.name, self.title)
 
+class Smartphone(Product):
+     diagonal = models.CharField(max_length=255, verbose_name='диагональ')
+     display_type = models.CharField(max_length=255, verbose_name='тип дисплея')
+     resolution = models.CharField(max_length=255, verbose_name='разрешение экрана')
 
 
 
