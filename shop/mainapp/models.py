@@ -5,7 +5,23 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 
 User = get_user_model()
 
-class LatestProducts
+class LatestProductsManager:
+
+    @staticmethod
+    def get_products_for_main_page(*args, **kwargs):
+        products = []
+        ct_models = ContentType.objects.filter(model__in=args)
+        for ct_model in ct_models:
+            model_products = ct_model.model_class()._base_manager.all().order_by('-id')[:5]
+            products.extend(model_products)
+        return products
+
+
+
+class LatestProducts:
+
+    objects = LatestProductsManager()
+
 
 class Category(models.Model):
 
